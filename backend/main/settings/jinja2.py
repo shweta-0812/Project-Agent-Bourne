@@ -1,0 +1,17 @@
+# The options environment enables us to use certain functions in templates
+# flake8: noqa
+from jinja2 import Environment
+from django.urls import reverse
+from django.contrib.staticfiles.storage import staticfiles_storage
+
+
+# This enables us to use Django template tags like {% url “index” %} or {% static “path/to/static/file.js” %} in our
+# Jinja2 templates for more later django installations use: from django.templatetags.static import static
+
+def environment(**options):
+    env = Environment(**options)
+    env.globals.update({
+        "static": staticfiles_storage.url,
+        "url": reverse
+    })
+    return env

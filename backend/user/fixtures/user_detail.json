@@ -1,0 +1,59 @@
+[
+    {
+        "model": "user.UserDetailModel",
+        "id": 1,
+        "fields": {
+            "uuid": "c0c94b3e-89c5-4b2f-8d6c-663ed6bdf888",
+            "name": "John Doe",
+            "email": "john.doe@gmail.com",
+            "password": "",
+            "profile_pic_url": "https://example.com/john_doe.jpg",
+            "last_login": "2024-08-23T10:00:00Z",
+            "oauth_provider": "google",
+            "oauth_id": "1234567890"
+        }
+    },
+    {
+        "model": "user.UserDetailModel",
+        "id": 2,
+        "fields": {
+            "uuid": "d1c94b3e-89c5-4b2f-8d6c-663ed6bdf999",
+            "name": "Jane Smith",
+            "email": "jane.smith@gmail.com",
+            "password": "",
+            "profile_pic_url": "https://example.com/jane_smith.jpg",
+            "last_login": "2024-08-22T09:00:00Z",
+            "oauth_provider": "facebook",
+            "oauth_id": "0987654321"
+        }
+    },
+    {
+        "model": "user.UserDetailModel",
+        "id": 3,
+        "fields": {
+            "uuid": "d1c94b3e-89c5-4b2f-8d6c-663ed6bdf991",
+            "name": "Jane Doe",
+            "email": "jane.doe@hotmail.com",
+            "password": "pbkdf2_sha256$260000$4hNHmDK9VpAl$3PqJTXgPQY5RlFImnWo0zNHk7Sovd8F+jFn2+XcL9cZ=",
+            "profile_pic_url": "",
+            "last_login": "2024-08-22T09:00:00Z",
+            "oauth_provider": "",
+            "oauth_id": ""
+        }
+    },
+    {
+        "model": "user.UserDetailModel",
+        "id": 4,
+        "fields": {
+            "uuid": "d1c94b3e-89c5-4b2f-8d6c-663ed6bdf999",
+            "name": "Tiger Smith",
+            "email": "tiger.smith@facebook.com",
+            "password": "pbkdf2_sha256$260000$4hNHmDK9VpAl$3PqJTXgPQY5RlFImnWo0zNHk7Sovd8F+jFn2+XcL9cZ=",
+            "profile_pic_url": "https://example.com/jane_smith.jpg",
+            "last_login": "2024-08-22T09:00:00Z",
+            "oauth_provider": "",
+            "oauth_id": ""
+        }
+    },
+
+]

@@ -1,0 +1,21 @@
+# Go to dir with docker-compose.yml file and Run $docker-compose up -d
+---
+services:
+  frontend:
+    container_name: vuejs-frontend
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./public:/app/public
+      - ./src:/app/src
+      - ./index.html:/app/index.html
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - ./vite.config.js:/app/vite.config.js
+
+    command: npm run dev --host
+#    command: sleep infinity
+

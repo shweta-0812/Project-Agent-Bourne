@@ -1,0 +1,61 @@
+# Go to dir with docker-compose.yml file and Run $docker-compose up -d
+---
+services:
+  # add db
+  db:
+    image: postgres:15.7
+    # restart: always
+    # set shared memory limit when using docker-compose
+    # shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    #volumes:
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mb
+    volumes:
+      - db_data:/var/lib/agent_bourne/db/data/
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB_NAME}
+      - POSTGRES_USER=${POSTGRES_DB_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_DB_PASSWORD}
+
+  # TODO: add vector DB PG-Vector
+
+  backend:
+    build:
+      context: ./
+      # this is to load backend specific Dockerfile instead of root Dockerfile
+      dockerfile: Dockerfile
+
+    command: poetry run python manage.py runserver --settings=main.settings.dev
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_DB_NAME
+      - POSTGRES_DB_USER
+      - POSTGRES_DB_PASSWORD
+      - POSTGRES_DB_HOST=db
+      - POSTGRES_DB_PORT
+
+      - OPENAI_API_BASE
+      - OPENAI_API_KEY
+
+      - JINA_API_KEY
+      - JINA_MODEL
+      - JINA_API_BASE
+
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET
+      - GOOGLE_REDIRECT_URI
+      - GOOGLE_TOKEN_URL
+
+      - JWT_SECRET_KEY
+
+volumes:
+  db_data:
+...

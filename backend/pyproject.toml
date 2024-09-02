@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "main"
+version = "0.1.0"
+description = ""
+authors = ["shweta-0812, zahid0"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "=3.10.14"
+python-dotenv = "=1.0.1"
+Django = "=5.0.6"
+psycopg2 = "=2.9.9"
+graphene-django = "=3.2.1"
+django-filter = "=24.2"
+django-cors-headers = "=4.4.0"
+pydantic = "=2.7.1"
+openai = "=1.30.3"
+jinja2 = "=3.1.4"
+crewai = "=0.30.11"
+crewai-tools = "=0.3.0"
+duckduckgo-search = "=6.1.7"
+pyjwt = "=2.8.0"
+gunicorn = "=23.0.0"
+django-timezone-field = "=7.0"
+flake8 = "=7.1.1"
+celery = {extras = ["redis"], version = "=5.4.0"}
+django-redis = "=5.4.0"
+redis = "=5.0.8"
+channels = "=4.1.0"
+daphne = "=4.1.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
