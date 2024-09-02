@@ -14,5 +14,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src')
     }
   }
-  // base: '/static/dist/',  // specify a prefix path for all assets this is dependent on Django for now
+  base: '/static/dist/',  // specify a prefix path for all assets this is dependent on Django for now
 })

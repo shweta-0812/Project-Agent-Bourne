@@ -3,59 +3,72 @@ An agent which can get your tasks done. Your personal assistant.
 
 The backend uses Python version 3.12.2 
 
-To run backend server:
+###To run backend server:
 
-
-Make sure to setup and run Postgres DB on localhost:
+####Make sure to setup and run Postgres DB on localhost:
 1. Install Postgres DB
 2. Install Postgres client
 3. Create a DB with name 'agent_bourne'
 4. Create username and password
 
 To do the above steps run the following commands in terminal after installing Postgres:
-`$ psql`
-`$ CREATE DATABASE agent_bourne;`
-`$ CREATE USER agent_bourne WITH PASSWORD 'your-password';`
-`$ \q`
+- `$ psql`
+- `CREATE DATABASE <db_role>;`
+- `CREATE USER <db_role> WITH PASSWORD 'your-password';`
+- `GRANT ALL PRIVILEGES ON DATABASE <db_name> TO <db_role>;`
+- `\c <db_name>`
+- `GRANT ALL PRIVILEGES ON SCHEMA public TO <db_role>;`
+- `ALTER DATABASE <db_name> OWNER TO <db_role>;`
+- `$ \q`
 
-Create .env file in the root folder `backend/.env`
-1. Copy sample.env to .env
-2. update the values of the variables
+#### Create .env file in the root folder `backend/.env`
+1. Go to terminal
+2. go to backend dir `cd Project-Agent-Bourne/backend`
+3. `vim .env`
+4. copy keys from `sample.env` to `.env` and update the values of the keys
 
-Make sure to create migrations for DB changes
-4. Make sure to run migrations in case there are DB schema changes by running 
+
+#### Initialise virtual env for Backend app. 
+We use poetry for package management and installation
+1. Go to terminal
+2. go to backend dir `cd Project-Agent-Bourne/backend`
+3. install and setup poetry using https://python-poetry.org/docs/
+4. run command `$ sh serve.sh dev`
+
+#### Make sure to create migrations for DB changes
+1. Go to terminal
+2. go to backend dir `cd Project-Agent-Bourne/backend`
+3. Make sure to run migrations in case there are DB schema changes by running 
 `$  python manage.py makemigrations`
 
-Dry run migrations by running following command in terminal inside backend directory
+#### Dry run migrations by running following command in terminal inside backend directory
 `$ python manage.py migrate --dry`
 
-Initialise virtual env
+#### Running the Backend App
 1. Go to terminal
-2. Go to backend root directory
-3. run command `$ sh serve.sh dev`
-4.Go to backend folder and run the command `$ serve.sh dev`
-
-Install dependencies
-1. Run command in the backend root directory `$ poetry install`
+2. go to backend dir `cd Project-Agent-Bourne/backend`
+3. run command `poetry run python manage.py runserver --settings=main.settings.dev` (you can use different values like main.settings.prod and main.settings.test for Production and Test Env respectively.) 
 
 
-Verify python version
+#### Verifying your current python version
 To print python version:
-1. go to terminal
-2. open the project directory
+1. Go to terminal
+2. go to backend dir `cd Project-Agent-Bourne/backend`
 3. run following commands:
-`$ python3` 
-`import sys' then 'print(sys.version)'`
-`exit()`
+   1. `$ python3`
+   2. `import sys' then 'print(sys.version)'`
+   3. `exit()`
 
-To run frontend server for development purpose:
-1. go to terminal
-2. open the project directory
+#### To run frontend server for development purpose:
+1. Go to terminal
+2. go to backend dir `cd Project-Agent-Bourne/frontend`
 3. run following commands:
-   `cd frontend`
-   `$ npm run dev`
+   1. `cd frontend`
+   2. `npm install`
+   3. `npm run dev`
 
 
+#### Generating dist folder for frontend static assets
 
 Note:
 
